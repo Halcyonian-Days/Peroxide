@@ -1,0 +1,395 @@
+/* ─────────────────────────────
+   FONTS
+───────────────────────────── */
+@font-face {
+  font-family: 'Crimson Text';
+  src: url('Assets/Crimson_Text/CrimsonText-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Crimson Text';
+  src: url('Assets/Crimson_Text/CrimsonText-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Crimson Text';
+  src: url('Assets/Crimson_Text/CrimsonText-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Red Hat Display';
+  src: url('Assets/Red_Hat_Display/RedHatDisplay-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Red Hat Display';
+  src: url('Assets/Red_Hat_Display/RedHatDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+/* ─────────────────────────────
+   VARIABLES
+───────────────────────────── */
+:root {
+  --black:   #070707;
+  --white:   #c8c3bc;
+  --white-h: #f0ece6;
+  --dim:     #989088;
+
+  --red:    #CD0714;
+  --sunset: #FFA306;
+
+  --serif: 'Crimson Text', serif;
+  --mono:  'Red Hat Display', sans-serif;
+
+  --px: 56px;
+}
+
+/* ─────────────────────────────
+   RESET
+───────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ─────────────────────────────
+   NAV
+───────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px var(--px) 20px;
+  transition: opacity 0.35s ease;
+  background-color: #070707;
+}
+
+.nav-mark {
+  font-family: var(--serif);
+  font-size: 36px;
+  letter-spacing: 0.2em;
+  color: var(--white-h);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 24px;
+  letter-spacing: 0.18em;
+  color: var(--dim);
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: var(--sunset);
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover { color: var(--white-h); }
+.nav-links a:hover::after { width: 100%; }
+
+/* ─────────────────────────────
+   HR SEPARATOR
+───────────────────────────── */
+#thingy {
+  border: none;
+  border-top: 1px solid var(--sunset);
+  margin-top: 99.4px;
+}
+
+/* ─────────────────────────────
+   HERO
+───────────────────────────── */
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hero-body {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4%;
+  padding: 3% var(--px);
+}
+
+/* ── LEFT ── */
+.hero-left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+
+.name-block {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.88;
+}
+
+.name {
+  font-family: var(--serif);
+  font-size: clamp(72px, 11vw, 160px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--white-h);
+  display: block;
+  margin-left: 0.06em;
+  border-left: 4px solid var(--red);
+  padding-left: 0.12em;
+}
+
+.hero-desc {
+  font-family: var(--mono);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.95;
+  color: var(--white);
+  margin-left: calc(0.06em + 4px + 0.12em);
+}
+
+/* ── MARKS ── */
+mark {
+  background: none;
+  padding: 0 2px;
+}
+
+.mark-red {
+  color: var(--white-h);
+  border-bottom: 1px solid var(--red);
+  box-shadow: inset 0 -3px 0 rgba(205, 7, 20, 0.18);
+}
+
+.mark-orange {
+  color: var(--white-h);
+  border-bottom: 1px solid var(--sunset);
+  box-shadow: inset 0 -3px 0 rgba(226, 68, 2, 0.18);
+}
+
+.work-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--dim);
+  margin-left: calc(0.06em + 4px + 0.12em);
+  width: fit-content;
+  border-top: 1px solid var(--red);
+  padding-top: 10px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.work-link:hover {
+  color: var(--sunset);
+  border-color: var(--sunset);
+}
+
+/* ── RIGHT ── */
+.hero-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.hero-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #111010;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 12px;
+  border-left:   2px solid var(--red);
+  border-bottom: 2px solid var(--sunset);
+}
+
+.hero-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-image::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 32px; height: 2px;
+  background: var(--sunset);
+}
+
+.hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 65%, rgba(205, 7, 20, 0.06));
+  pointer-events: none;
+}
+
+/* ─────────────────────────────
+   HAMBURGER BUTTON
+───────────────────────────── */
+
+/* JS adds .collapsed to <nav> when links collide with logo */
+.nav.collapsed .nav-links  { display: none; }
+.nav.collapsed .nav-burger { display: flex; }
+.nav.collapsed ~ .mobile-menu { display: flex; }
+
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 60;
+}
+
+.nav-burger span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--white-h);
+  transition: transform 0.3s ease, opacity 0.3s ease, background 0.2s ease;
+  transform-origin: center;
+}
+
+.nav-burger:hover span { background: var(--sunset); }
+
+/* X state when open */
+.nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ─────────────────────────────
+   MOBILE MENU
+───────────────────────────── */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 99.4px; left: 0; right: 0;
+  z-index: 40;
+  background: var(--black);
+  padding: 0;
+  gap: 0;
+  transform: translateY(-100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-menu.open {
+  transform: translateY(0);
+}
+
+/* The hr at the bottom of the mobile menu */
+.menu-rule {
+  border: none;
+  border-top: 1px solid var(--sunset);
+  margin: 20px 0 0;
+}
+
+.mobile-menu a {
+  font-family: var(--serif);
+  font-size: 36px;
+  color: var(--dim);
+  margin: 16px;
+  border-bottom: 1px solid #1a1816;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.mobile-menu a:last-child { border-bottom: none; }
+
+.mobile-menu a:hover {
+  color: var(--white-h);
+  padding-left: 8px;
+}
+
+/* ─────────────────────────────
+   MOBILE — triggered by JS at
+   same time as hamburger via
+   body.mobile class
+───────────────────────────── */
+body.mobile {
+  --px: 24px;
+  overflow: auto;
+}
+
+body.mobile .hero-body {
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 24px var(--px) 40px;
+}
+
+body.mobile .hero-left {
+  flex: unset;
+  width: 100%;
+}
+
+body.mobile .hero-right {
+  flex: unset;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  align-self: center;
+}
+
+body.mobile .name {
+  font-size: clamp(52px, 16vw, 96px);
+}
+
+body.mobile .hero-desc {
+  font-size: 15px;
+}
+
+/* Hide the static hr when mobile menu is open — menu-rule takes its place */
+.mobile-menu.open ~ .hero #thingy {
+  visibility: hidden;
+}
